@@ -1,0 +1,21 @@
+{
+  "name": "school/document-request-api",
+  "description": "Academic Document Request System — Native PHP API",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "firebase/php-jwt": "^6.10",
+    "phpmailer/phpmailer": "^6.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "audit": {
+      "block-insecure": false
+    }
+  }
+}

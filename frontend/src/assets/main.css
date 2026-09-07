@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-gray-900 antialiased;
+  }
+}
+
+@layer utilities {
+  .btn-primary {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    @apply text-white font-semibold rounded-lg px-4 py-2 transition-opacity hover:opacity-90;
+  }
+}
