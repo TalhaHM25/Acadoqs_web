@@ -7,6 +7,7 @@ import FormField from '@/components/forms/FormField.vue'
 import StatusBadge from '@/components/common/StatusBadge.vue'
 import SourceBadge from '@/components/common/SourceBadge.vue'
 import { adminService } from '@/services/admin.service'
+import { API_BASE_URL } from '@/services/api'
 import { formatDate, formatCurrency } from '@/utils/formatters'
 
 const route = useRoute()
@@ -23,10 +24,9 @@ const rejectReason = ref('')
 const paymentAction = ref<'verify'|'reject'|null>(null)
 const paymentRejectReason = ref('')
 
-const apiBase = import.meta.env.VITE_API_URL ?? ''
 function proofUrl(path: string) {
   const token = localStorage.getItem('auth_token') ?? ''
-  return `${apiBase}/admin/file?path=${encodeURIComponent(path)}&token=${encodeURIComponent(token)}`
+  return `${API_BASE_URL}/admin/file?path=${encodeURIComponent(path)}&token=${encodeURIComponent(token)}`
 }
 
 const hasPaymentPending = computed(() => false)

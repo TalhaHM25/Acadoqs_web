@@ -3,6 +3,7 @@ import StatusBadge from '@/components/common/StatusBadge.vue'
 import SourceBadge from '@/components/common/SourceBadge.vue'
 import DueDateReminder from '@/components/common/DueDateReminder.vue'
 import AppButton from '@/components/common/AppButton.vue'
+import { API_BASE_URL } from '@/services/api'
 import { formatCurrency, formatDate } from '@/utils/formatters'
 import type { DocumentRequest } from '@/types/request.types'
 
@@ -15,11 +16,9 @@ const emit = defineEmits<{
   close: []
 }>()
 
-const apiBase = import.meta.env.VITE_API_URL ?? 'http://localhost/document-request-system/backend/public/api'
-
 function proofUrl(path: string): string {
   const token = localStorage.getItem('auth_token') ?? ''
-  return `${apiBase}/admin/file?path=${encodeURIComponent(path)}&token=${encodeURIComponent(token)}`
+  return `${API_BASE_URL}/admin/file?path=${encodeURIComponent(path)}&token=${encodeURIComponent(token)}`
 }
 
 function fullName(request: DocumentRequest): string {

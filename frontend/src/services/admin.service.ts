@@ -1,4 +1,4 @@
-import api from './api'
+import api, { API_BASE_URL } from './api'
 
 export const adminService = {
   // Dashboard
@@ -89,7 +89,7 @@ export const adminService = {
     )
     const token  = localStorage.getItem('auth_token') ?? ''
     const qs     = new URLSearchParams({ ...clean, token }).toString()
-    return `${import.meta.env.VITE_API_URL || 'http://localhost:8000/api'}/admin/reports/export?${qs}`
+    return `${API_BASE_URL}/admin/reports/export?${qs}`
   },
 
   // Document types

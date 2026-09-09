@@ -3,9 +3,9 @@ import { ref, onMounted } from 'vue'
 import AppButton from '@/components/common/AppButton.vue'
 import AppAlert from '@/components/common/AppAlert.vue'
 import FormField from '@/components/forms/FormField.vue'
-import api from '@/services/api'
+import api, { API_BASE_URL } from '@/services/api'
 
-const apiBase = (import.meta.env.VITE_API_URL ?? '').replace('/api', '')
+const backendBase = API_BASE_URL.replace(/\/api$/, '')
 
 const methods   = ref<any[]>([])
 const loading   = ref(true)
@@ -24,7 +24,7 @@ const blank = () => ({ name: '', type: 'gcash', account_name: '', account_number
 const form  = ref(blank())
 
 function qrUrl(m: any): string {
-  return `${apiBase}/api/payment-methods/${m.id}/qr?t=${Date.now()}`
+  return `${backendBase}/api/payment-methods/${m.id}/qr?t=${Date.now()}`
 }
 
 async function load() {

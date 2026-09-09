@@ -7,16 +7,16 @@ import SourceBadge from '@/components/common/SourceBadge.vue'
 import AppAlert from '@/components/common/AppAlert.vue'
 import FormField from '@/components/forms/FormField.vue'
 import { adminService } from '@/services/admin.service'
+import { API_BASE_URL } from '@/services/api'
 import { formatDate, formatCurrency } from '@/utils/formatters'
 import type { DocumentRequest, RequestStatus } from '@/types/request.types'
 
 const route   = useRoute()
 const id      = Number(route.params.id)
-const apiBase = import.meta.env.VITE_API_URL ?? 'http://localhost/document-request-system/backend/public/api'
 
 function proofUrl(path: string): string {
   const token = localStorage.getItem('auth_token') ?? ''
-  return `${apiBase}/admin/file?path=${encodeURIComponent(path)}&token=${encodeURIComponent(token)}`
+  return `${API_BASE_URL}/admin/file?path=${encodeURIComponent(path)}&token=${encodeURIComponent(token)}`
 }
 
 const request   = ref<DocumentRequest | null>(null)
